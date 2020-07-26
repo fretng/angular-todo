@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from './service/account.service';
 
 @Component({
     selector: 'app-home',
@@ -8,14 +9,20 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
     public name = '';
 
-    constructor() {
+    constructor(private accountService: AccountService) {
     }
 
     ngOnInit(): void {}
 
     public onkeyInput(event) {
         if (event.key == 'Enter') {
-            console.log(this.name);
+            this.sendAuth();
         }
+    }
+
+    private sendAuth() {
+        this.accountService.getHello().subscribe((res) => {
+            console.log(res);
+        });
     }
 }

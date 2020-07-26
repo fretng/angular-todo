@@ -11,7 +11,7 @@ export class AccountService {
     constructor(private http: HttpClient) { }
 
     getHello() {
-        var url = env.apiUrl + '';
+        var url = env.apiUrl + '/aaa';
         return this.http.get(url);
     }
 }
