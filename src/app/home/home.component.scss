@@ -1,0 +1,13 @@
+@import "../../style/input.scss";
+
+.logo-text {
+    font-size: 3rem;
+    text-align: center;
+    color: #444;
+    margin-top: 30vh;
+}
+.box-input-name {
+    @include input-box(#90a4ae, #78909c);
+    max-width: 300px;
+    margin: auto;
+}
