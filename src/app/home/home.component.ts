@@ -6,7 +6,16 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-    constructor() {}
+    public name = '';
+
+    constructor() {
+    }
 
     ngOnInit(): void {}
+
+    public onkeyInput(event) {
+        if (event.key == 'Enter') {
+            console.log(this.name);
+        }
+    }
 }

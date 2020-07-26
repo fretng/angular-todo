@@ -5,7 +5,7 @@
 
     <div class="box-input-name">
         <div class="input-field text-gray">
-            <input type="text" id="input-name">
+            <input type="text" id="input-name" [(ngModel)]="name" (keyup)="onkeyInput($event)">
             <label for="input-name">Enter your name</label>
         </div>
     </div>
