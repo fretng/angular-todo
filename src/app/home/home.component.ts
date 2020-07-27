@@ -23,6 +23,8 @@ export class HomeComponent implements OnInit {
     private sendAuth() {
         this.accountService.getHello().subscribe((res) => {
             console.log(res);
+        }, (err) => {
+            console.error(err);
         });
     }
 }
