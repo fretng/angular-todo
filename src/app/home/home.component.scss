@@ -11,3 +11,13 @@
     max-width: 300px;
     margin: auto;
 }
+.padding-top {
+    padding-top: 20px;
+}
+.wrap-error-msg {
+    height: 22px;
+
+    .input-error {
+        color: #f44336;
+    }
+}

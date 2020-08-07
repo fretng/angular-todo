@@ -7,12 +7,28 @@ import { AccountService } from './service/account.service';
     styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-    public name = '';
+    public formInput = {
+        username: '',
+        password: '',
+    };
+    public formError = {
+        username: '',
+        passwprd: '',
+    };
 
     constructor(private accountService: AccountService) {
     }
 
     ngOnInit(): void {}
+
+
+    public testAnimate() {
+        if (this.formError.username == '') {
+            this.formError.username = 'error';
+        } else {
+            this.formError.username = '';
+        }
+    }
 
     public onkeyInput(event) {
         if (event.key == 'Enter') {
@@ -27,4 +43,6 @@ export class HomeComponent implements OnInit {
             console.error(err);
         });
     }
+
+
 }

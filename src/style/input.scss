@@ -4,13 +4,24 @@
         color: $color;
     }
     /* label focus color */
-    .input-field input[type="text"]:focus + label {
-        color: $active-color;
+    .input-field {
+        input[type="text"]:focus + label {
+            color: $active-color;
+        }
+        input[type="password"]:focus + label {
+            color: $active-color;
+        }
     }
     /* label underline focus color */
-    .input-field input[type="text"]:focus {
-        border-bottom: 1px solid $color;
-        box-shadow: 0 1px 0 0 $color;
+    .input-field {
+        input[type="text"]:focus {
+            border-bottom: 1px solid $color;
+            box-shadow: 0 1px 0 0 $color;
+        }
+        input[type="password"]:focus {
+            border-bottom: 1px solid $color;
+            box-shadow: 0 1px 0 0 $color;
+        }
     }
     /* valid color */
     .input-field input[type="text"].valid {
