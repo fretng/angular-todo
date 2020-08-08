@@ -34,7 +34,10 @@
 .body-page {
     max-width: 400px;
     margin: auto;
-    padding-top: 150px;
+    padding: 20px {
+        top: 150px;
+    }
+    overflow: hidden;
 }
 
 .wrap-item {
