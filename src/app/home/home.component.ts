@@ -65,6 +65,7 @@ export class HomeComponent implements OnInit {
         this.accountService.login(this.formInput.username, this.formInput.password).subscribe(
             (res) => {
                 this.cacheService.saveToken(res.token);
+                this.cacheService.saveUsername(this.formInput.username);
                 console.log(res);
                 this.router.navigateByUrl('/list');
             },
@@ -85,5 +86,8 @@ export class HomeComponent implements OnInit {
         }
     }
 
-
+    public skipLogout() {
+        this.cacheService.removeToken();
+        this.router.navigateByUrl('/list');
+    }
 }
