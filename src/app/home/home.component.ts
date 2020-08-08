@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from './service/account.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-home',
@@ -11,23 +12,22 @@ export class HomeComponent implements OnInit {
         username: '',
         password: '',
     };
-    public formError = {
-        username: '',
-        passwprd: '',
-    };
+    public errorMsg: string = '';
 
-    constructor(private accountService: AccountService) {
+    constructor(private accountService: AccountService, private router: Router) {
     }
 
     ngOnInit(): void {}
 
 
     public testAnimate() {
-        if (this.formError.username == '') {
-            this.formError.username = 'error';
+        if (this.errorMsg == '') {
+            this.errorMsg = 'error';
         } else {
-            this.formError.username = '';
+            this.errorMsg = '';
         }
+
+        this.router.navigateByUrl('/list');
     }
 
     public onkeyInput(event) {
@@ -36,12 +36,31 @@ export class HomeComponent implements OnInit {
         }
     }
 
+    public sendRegister() {
+        if (!this.validateInput()) {
+            return;
+        }
+    }
+
     private sendAuth() {
+        if (!this.validateInput()) {
+            return;
+        }
         this.accountService.getHello().subscribe((res) => {
             console.log(res);
         }, (err) => {
             console.error(err);
         });
+    }
+
+    private validateInput() {
+        if (this.formInput.username == '' || this.formInput.password == '') {
+            this.errorMsg = 'Please input username, password!';
+            return false;
+        } else {
+            this.errorMsg = '';
+            return true;
+        }
     }
 
 
