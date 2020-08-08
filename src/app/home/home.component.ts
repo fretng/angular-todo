@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from './service/account.service';
+import { CacheService } from 'src/app/service/cache.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +15,11 @@ export class HomeComponent implements OnInit {
     };
     public errorMsg: string = '';
 
-    constructor(private accountService: AccountService, private router: Router) {
+    constructor(
+        private accountService: AccountService,
+        private router: Router,
+        private cacheService: CacheService
+    ) {
     }
 
     ngOnInit(): void {}
@@ -40,17 +45,34 @@ export class HomeComponent implements OnInit {
         if (!this.validateInput()) {
             return;
         }
+
+        this.accountService.register(this.formInput.username, this.formInput.password).subscribe(
+            (res) => {
+                console.log(res);
+                this.sendAuth();
+            },
+            (err) => {
+                console.log(err);
+                this.errorMsg = err.msg.message;
+            }
+        );
     }
 
-    private sendAuth() {
+    public sendAuth() {
         if (!this.validateInput()) {
             return;
         }
-        this.accountService.getHello().subscribe((res) => {
-            console.log(res);
-        }, (err) => {
-            console.error(err);
-        });
+        this.accountService.login(this.formInput.username, this.formInput.password).subscribe(
+            (res) => {
+                this.cacheService.saveToken(res.token);
+                console.log(res);
+                this.router.navigateByUrl('/list');
+            },
+            (err) => {
+                console.log(err);
+                this.errorMsg = err.msg.message;
+            },
+        );
     }
 
     private validateInput() {

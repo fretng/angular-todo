@@ -24,8 +24,31 @@ export class AccountService {
             console.error('Error : ' + error);
             return throwError('code error');
         } else {
+            // console.log(error);
             console.log(`Api error : (${error.status}) ${error.message}`);
         }
-        return throwError('Connect api error');
+        var err = {
+            reason: 'Connect api error',
+            msg: error.error,
+        }
+        return throwError(err);
+    }
+
+    public register(username: string, password: string): Observable<any> {
+        var params = {
+            username: username,
+            password: password,
+        };
+        var url = env.apiUrl + '/account';
+        return this.http.post(url, params).pipe(catchError(this.handleError));
+    }
+
+    public login(username: string, password: string): Observable<any> {
+        var params = {
+            username: username,
+            password: password,
+        };
+        var url = env.apiUrl + '/account/auth';
+        return this.http.post(url, params).pipe(catchError(this.handleError));
     }
 }
