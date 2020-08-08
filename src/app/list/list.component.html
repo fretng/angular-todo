@@ -6,3 +6,44 @@
         </div>
     </div>
 </div>
+
+
+<div class="body-page">
+    <div class="box-input-message">
+        <div class="input-field">
+            <i class="material-icons prefix">edit</i>
+            <input id="icon_prefix" type="text" class="validate" [(ngModel)]="inputText" (keyup)="onkeyInput($event)">
+            <label for="icon_prefix">New TODO</label>
+        </div>
+    </div>
+
+    <div>
+        <div *ngFor="let item of todoList" class="wrap-item">
+            <div *ngIf="!item.isDone" class="list-tiem">
+                <div>
+                    {{item.message}}
+                </div>
+                <div class="clickable" (click)="checkTodoItem(item, true)">
+                    <i class="material-icons">crop_din</i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="done-list">
+        <div *ngFor="let item of todoList" class="wrap-item">
+            <div *ngIf="item.isDone" class="list-tiem is-done">
+                <div>
+                    <del>{{item.message}}</del>
+                </div>
+                <div class="right-zone">
+                    <div class="clickable" (click)="checkTodoItem(item, false)">
+                        <i class="material-icons">check</i>
+                    </div>
+                    <div class="clickable" (click)="deleteItem(item)">
+                        <i class="material-icons">cancel</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

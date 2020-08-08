@@ -1,3 +1,12 @@
+@import "../../style/input.scss";
+
+.box-input-message {
+    @include input-box(#00838f, #006064);
+    // color: #90a4ae;
+    // max-width: 300px;
+    // margin: auto;
+}
+
 .top-bar {
     position: relative;
 
@@ -20,4 +29,41 @@
         font-weight: 500;
         color: #757575;
     }
+}
+
+.body-page {
+    max-width: 400px;
+    margin: auto;
+    padding-top: 150px;
+}
+
+.wrap-item {
+    .list-tiem {
+        display: flex;
+        justify-content: space-between;
+        color: #009688;
+        padding: {
+            top: 12px;
+            bottom: 5px;
+        };
+        border-bottom: 1px solid #eeeeee;
+
+        &.is-done {
+            color: #e0e0e0;
+        }
+
+        .right-zone {
+            display: flex;
+            div {
+                margin-left: 10px;
+            }
+        }
+    }
+}
+.clickable {
+    cursor: pointer;
+}
+
+.done-list {
+    margin-top: 50px;
 }
