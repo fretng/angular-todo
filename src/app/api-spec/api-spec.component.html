@@ -1,0 +1,83 @@
+<div class="page-api">
+    <table>
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>url</th>
+                <th>method</th>
+                <th>Request</th>
+                <th>Response</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Add new todo</td>
+                <td>/todo-list</td>
+                <td>POST</td>
+                <td>{{ printJson({ "message": "string" }) }}</td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>Get all</td>
+                <td>/todo-list</td>
+                <td>GET</td>
+                <td>-</td>
+                <td>
+                    <pre>{{ printJson({ id: 'number', message: 'string', isDone: 'boolean'}) }}</pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Check todo</td>
+                <td>/todo-list/:id</td>
+                <td>PUT</td>
+                <td>
+                    {{ printJson({ isDone: 'boolean' }) }}
+                </td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>Delete todo</td>
+                <td>/todo-list/:id</td>
+                <td>DELETE</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table style="margin-top: 100px;">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>url</th>
+                <th>method</th>
+                <th>Request</th>
+                <th>Response</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Register</td>
+                <td>/account</td>
+                <td>POST</td>
+                <td>
+                    <pre>{{ printJson({ username: 'string', password: 'string' }) }}</pre>
+                </td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>Login</td>
+                <td>/account/auth</td>
+                <td>POST</td>
+                <td>
+                    <pre>{{ printJson({ username: 'string', password: 'string' }) }}</pre>
+                </td>
+                <td>{{ printJson({ token: 'string' }) }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

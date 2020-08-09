@@ -8,11 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
 import { ListComponent } from './list/list.component';
+import { ApiSpecComponent } from './api-spec/api-spec.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        ListComponent
+        ListComponent,
+        ApiSpecComponent
     ],
     imports: [
         BrowserModule,
