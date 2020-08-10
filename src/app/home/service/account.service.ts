@@ -48,7 +48,7 @@ export class AccountService {
             username: username,
             password: password,
         };
-        var url = env.apiUrl + '/account/auth';
+        var url = env.apiUrl + '/auth';
         return this.http.post(url, params).pipe(catchError(this.handleError));
     }
 }
